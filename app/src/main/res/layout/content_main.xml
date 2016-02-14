@@ -78,25 +78,28 @@
         android:layout_centerHorizontal="true" />
 
     <ImageButton
-        android:layout_width="170dp"
+        android:layout_width="150dp"
         android:layout_height="35dp"
         android:id="@+id/main_register"
         android:background="@drawable/nu"
         android:clickable="true"
         android:layout_marginTop="30dp"
+        android:onClick="register_register"
         android:layout_below="@+id/forgetpasword"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="register_register"/>
+        android:layout_toLeftOf="@+id/contactus"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp" />
 
     <ImageButton
-        android:layout_width="170dp"
+        android:layout_width="150dp"
         android:layout_height="35dp"
         android:id="@+id/contactus"
         android:background="@drawable/cu"
         android:clickable="true"
         android:layout_alignTop="@+id/main_register"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp" />
 
 </RelativeLayout>

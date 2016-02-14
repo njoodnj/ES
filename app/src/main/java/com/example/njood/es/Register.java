@@ -56,6 +56,13 @@ public class Register extends Activity {
 
 
     }
+    public void policy_pop(View view)
+    {
+
+        Intent i = new Intent(getApplicationContext(),policy.class);
+        startActivity(i);
+
+    }
 
     public void register_register(View v) {
 
@@ -67,12 +74,34 @@ public class Register extends Activity {
         email = r_email.getText().toString();
         remail = r_reemail.getText().toString();
         address = r_address.getText().toString();
+        if( r_ID.getText().toString().length() == 0 ){
+            r_ID.setError( "ID is required!" );}
+        if( r_FullName.getText().toString().length() == 0 ){
+            r_FullName.setError( "Name is required!" );}
+        if( r_Password.getText().toString().length() == 0 ){
+            r_Password.setError( "Password is required!" );}
+        if( r_repassword.getText().toString().length() == 0 ){
+            r_repassword.setError( "Re Enter your password" );}
+        if( r_email.getText().toString().length() == 0 ){
+            r_email.setError( "Email is required!" );}
+        if( r_reemail.getText().toString().length() == 0 ){
+            r_reemail.setError( "Re Enter your email" );}
+        if( r_address.getText().toString().length() == 0 ){
+            r_address.setError("Address is required!");}
+        if (!r_policy.isChecked()){
+            r_policy.setError("you must agree to policy");}
 
+        else {
+            if( !pass.equals(repass )){
+                r_repassword.setError( "Password dose not match" );}
+            if( !email.equals(remail )){
+                r_reemail.setError( "Email dose not match" );}
+            else {
 
         BackGround b = new BackGround();
         b.execute(id, name, pass, email, address);
-        startActivity(new Intent(this, MainActivity.class));
-    }
+        startActivity(new Intent(this, mainReg.class));
+    }}}
     class BackGround extends AsyncTask<String, String, String> {
 
 

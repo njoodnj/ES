@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
     }
 
     public void register_register(View v){
-        startActivity(new Intent(this,Register.class));
+        startActivity(new Intent(this,mainReg.class));
     }
 
     public void main_login(View v){
