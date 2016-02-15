@@ -42,7 +42,7 @@ public class Register extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_register);
+        setContentView(R.layout.activity_register);
 
 
         r_ID = (EditText) findViewById(R.id.ID);

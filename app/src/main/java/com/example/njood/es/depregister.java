@@ -37,7 +37,7 @@ public class depregister extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_depregister);
+        setContentView(R.layout.activity_depregister);
 
 
         r_ID = (EditText) findViewById(R.id.ID);
