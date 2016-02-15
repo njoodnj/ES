@@ -24,7 +24,5 @@ public class mainReg extends AppCompatActivity {
     public  void depReg(View view){
         Intent i = new Intent(getApplicationContext(),depregister.class);
         startActivity(i);}
-    public  void log(View view){
-        Intent i = new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(i);}
+
 }

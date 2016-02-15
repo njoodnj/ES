@@ -39,17 +39,6 @@
         android:layout_centerHorizontal="true"
         android:textSize="22dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Click Here to login"
-        android:id="@+id/login"
-        android:layout_marginTop="42dp"
-        android:textSize="16dp"
-        android:textIsSelectable="true"
-        android:layout_below="@+id/reg_as_d"
-        android:layout_centerHorizontal="true"
-        android:onClick="log" />
+
 
 </RelativeLayout>

@@ -100,7 +100,7 @@ public class Register extends Activity {
 
         BackGround b = new BackGround();
         b.execute(id, name, pass, email, address);
-        startActivity(new Intent(this, mainReg.class));
+        startActivity(new Intent(this, MainActivity.class));
     }}}
     class BackGround extends AsyncTask<String, String, String> {
 

@@ -104,7 +104,7 @@ public class depregister extends Activity {
             else {
                 BackGround b = new BackGround();
                 b.execute(id, rid, name, pass, email, address, relation);
-                startActivity(new Intent(this, mainReg.class));}
+                startActivity(new Intent(this, MainActivity.class));}
         }
     }
     class BackGround extends AsyncTask<String, String, String> {
