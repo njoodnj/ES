@@ -114,12 +114,12 @@ public class depregister extends Activity {
         protected String doInBackground(String... params) {
 
             String id = params[0];
-            String name = params[1];
-            String pass = params[2];
-            String email = params[3];
-            String address = params[4];
-            String relation = params[5];
-            String rid = params[6];
+            String rid = params[1];
+            String name = params[2];
+            String pass = params[3];
+            String email = params[4];
+            String address = params[5];
+            String relation = params[6];
             String data="";
             int tmp;
 
