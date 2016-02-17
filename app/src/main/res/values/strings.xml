@@ -7,4 +7,5 @@
     <string name="title_activity_depregister">depregister</string>
     <string name="title_activity_policy">policy</string>
     <string name="title_activity_main_reg">mainReg</string>
+    <string name="title_activity_driver__home">Driver_Home</string>
 </resources>

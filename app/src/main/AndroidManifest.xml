@@ -39,6 +39,10 @@
         <activity
             android:name=".mainReg"
             android:label="@string/title_activity_main_reg"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Driver_Home"
+            android:label="@string/title_activity_driver__home"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
