@@ -43,7 +43,8 @@
         <activity
             android:name=".Driver_Home"
             android:label="@string/title_activity_driver__home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

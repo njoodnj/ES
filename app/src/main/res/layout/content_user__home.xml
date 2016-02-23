@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.njood.es.User_Home"
     tools:showIn="@layout/activity_user__home">
-
+    <!--update onclick button for updatebutton-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +36,6 @@
         android:layout_alignParentStart="true" />
 
     <ImageButton
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/viewbutton"
@@ -46,7 +45,6 @@
         android:layout_alignParentStart="true" />
 
     <ImageButton
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/updatebutton"
@@ -55,6 +53,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+
+
 
     <TextView
         android:layout_width="wrap_content"

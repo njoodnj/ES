@@ -49,8 +49,10 @@ public class MainActivity extends Activity {
     public void main_login(View v){
         Id = id.getText().toString();
         Password = password.getText().toString();
+
         BackGround b = new BackGround();
         b.execute(Id, Password);
+
     }
 
     class BackGround extends AsyncTask<String, String, String> {
@@ -106,15 +108,19 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
 
             }
-
-            Intent i = new Intent(ctx, User_Home.class);
-            i.putExtra("r_id", ID);
-            i.putExtra("r_name", NAME);
-            i.putExtra("r_password", PASSWORD);
-            i.putExtra("r_email", EMAIL);
-            i.putExtra("r_address", ADDRESS);
-            startActivity(i);
-
+            if( id.getText().toString().length() == 0 ){
+                id.setError("ID is required!");}
+            if( password.getText().toString().length() == 0 ){
+                password.setError( "Password is required!" );}
+            else {
+                Intent i = new Intent(ctx, User_Home.class);
+                i.putExtra("r_id", ID);
+                i.putExtra("r_name", NAME);
+                i.putExtra("r_password", PASSWORD);
+                i.putExtra("r_email", EMAIL);
+                i.putExtra("r_address", ADDRESS);
+                startActivity(i);
+            }
         }
     }
 }

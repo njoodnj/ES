@@ -40,7 +40,10 @@ public class User_Home extends Activity {
         emailTV.setText("Email:"+email);
         addressTV.setText("Address:"+address);
         welcomeTV.setText(" "+name);
+
     }
+
+
 }
 
 
