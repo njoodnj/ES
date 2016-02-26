@@ -9,4 +9,6 @@
     <string name="title_activity_main_reg">mainReg</string>
     <string name="title_activity_driver__home">Driver_Home</string>
     <string name="title_activity_update">update</string>
+    <string name="title_activity_driverprofile">driverprofile</string>
+    <string name="title_activity_security_guard">securityGuard</string>
 </resources>

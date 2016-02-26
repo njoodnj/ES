@@ -16,6 +16,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ public class MainActivity extends Activity {
     EditText id, password;
     String Id, Password;
     Context ctx=this;
-    String ID=null, NAME=null, PASSWORD=null, EMAIL=null, ADDRESS=null;
+    String ID=null, NAME=null, PASSWORD=null, EMAIL=null, ADDRESS=null, ROLE=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,9 +102,10 @@ public class MainActivity extends Activity {
                 JSONObject user_data = root.getJSONObject("user_data");
                 ID = user_data.getString("r_id");
                 NAME = user_data.getString("r_name");
-                PASSWORD = user_data.getString("r_password");
-                EMAIL = user_data.getString("r_email");
-                ADDRESS = user_data.getString("r_address");
+           PASSWORD = user_data.getString("r_password");
+          EMAIL = user_data.getString("r_email");
+        ADDRESS = user_data.getString("r_address");
+                ROLE= user_data.getString("r_role");
             } catch (JSONException e) {
                 e.printStackTrace();
 
@@ -113,14 +115,34 @@ public class MainActivity extends Activity {
             if( password.getText().toString().length() == 0 ){
                 password.setError( "Password is required!" );}
             else {
+                if(ROLE.equals("resident") ||ROLE.equals("dependent") ){
                 Intent i = new Intent(ctx, User_Home.class);
                 i.putExtra("r_id", ID);
                 i.putExtra("r_name", NAME);
-                i.putExtra("r_password", PASSWORD);
-                i.putExtra("r_email", EMAIL);
-                i.putExtra("r_address", ADDRESS);
+               i.putExtra("r_password", PASSWORD);
+               i.putExtra("r_email", EMAIL);
+               i.putExtra("r_address", ADDRESS);
+                startActivity(i);}
+                if (ROLE.equals("driver")){
+                    Intent i = new Intent(ctx, driverprofile.class);
+                    i.putExtra("r_id", ID);
+                    i.putExtra("r_name", NAME);
+                            startActivity(i);
+                }
+                if (ROLE.equals("security")){
+                    Intent i = new Intent(ctx, securityGuard.class);
+
+                    startActivity(i);
+                }
+                if (ROLE.equals("nothing")){
+                    s="username or password is incorrect";
+                }
+                Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+                Intent i = new Intent(ctx, MainActivity.class);
+
                 startActivity(i);
+                }
             }
         }
     }
-}
+
