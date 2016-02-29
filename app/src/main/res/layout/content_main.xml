@@ -96,6 +96,7 @@
         android:id="@+id/contactus"
         android:background="@drawable/cu"
         android:clickable="true"
+        android:onClick="contactus"
         android:layout_alignTop="@+id/main_register"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

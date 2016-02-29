@@ -46,6 +46,9 @@ public class MainActivity extends Activity {
     public void register_register(View v){
         startActivity(new Intent(this,mainReg.class));
     }
+    public void contactus(View v){
+        startActivity(new Intent(this,contactus.class));
+    }
 
     public void main_login(View v){
         Id = id.getText().toString();
