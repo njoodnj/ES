@@ -51,6 +51,10 @@
         <activity
             android:name=".securityGuard"
             android:label="@string/title_activity_security_guard"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".contactus"
+            android:label="@string/title_activity_contactus"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
