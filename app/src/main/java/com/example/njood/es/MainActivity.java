@@ -136,12 +136,12 @@ public class MainActivity extends Activity {
                 }
                 if (ROLE.equals("nothing")){
                     s="username or password is incorrect";
-                }
+
                 Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
                 Intent i = new Intent(ctx, MainActivity.class);
 
                 startActivity(i);
-                }
+                }}
             }
         }
     }
