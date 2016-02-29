@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
             int tmp;
 
             try {
-                URL url = new URL("http://10.0.2.2/ES/login.php");
+                URL url = new URL("http://192.168.8.103/ES/login.php");
                 String urlParams = "r_id="+id+"&r_password="+password;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

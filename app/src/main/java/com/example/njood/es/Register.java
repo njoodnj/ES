@@ -116,7 +116,7 @@ public class Register extends Activity {
 
 
             try {
-                URL url = new URL("http://10.0.2.2/ES/register.php");
+                URL url = new URL("http://192.168.8.103/ES/register.php");
 
                 String urlParams = "id="+id+"&name="+name+"&pass="+pass+"&email="+email+"&address="+address;
 
