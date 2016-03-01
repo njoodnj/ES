@@ -12,4 +12,5 @@
     <string name="title_activity_driverprofile">driverprofile</string>
     <string name="title_activity_security_guard">securityGuard</string>
     <string name="title_activity_contactus">contactus</string>
+    <string name="title_activity_inv2">inv2</string>
 </resources>
