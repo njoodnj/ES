@@ -62,7 +62,6 @@ public class Register extends Activity {
 
     public void register_register(View v) {
 
-
         id = r_ID.getText().toString();
         name = r_FullName.getText().toString();
         pass = r_Password.getText().toString();

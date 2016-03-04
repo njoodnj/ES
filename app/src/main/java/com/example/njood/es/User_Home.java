@@ -43,7 +43,9 @@ public class User_Home extends Activity {
 
     }
 
-
+    public  void visitor(View view){
+        Intent i = new Intent(getApplicationContext(),visitor.class);
+        startActivity(i);}
 }
 
 
