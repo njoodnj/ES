@@ -96,7 +96,6 @@ public class Register extends Activity {
 
         BackGround b = new BackGround();
         b.execute(id, name, pass, email, address);
-        startActivity(new Intent(this, MainActivity.class));
     }}}
     class BackGround extends AsyncTask<String, String, String> {
 
@@ -116,7 +115,7 @@ public class Register extends Activity {
 
 
             try {
-                URL url = new URL("http://192.168.8.103/ES/register.php");
+                URL url = new URL("http://10.0.2.2/ES/register.php");
 
                 String urlParams = "id="+id+"&name="+name+"&pass="+pass+"&email="+email+"&address="+address;
 
@@ -150,6 +149,10 @@ public class Register extends Activity {
                 s="Data saved successfully.";
             }
             Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+            Intent i = new Intent(ctx, MainActivity.class);
+
+            startActivity(i);
+
         }
 
 

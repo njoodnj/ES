@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
     EditText id, password;
     String Id, Password;
     Context ctx=this;
-    String ID=null, NAME=null, PASSWORD=null, EMAIL=null, ADDRESS=null, ROLE=null;
+    String ID=null, NAME=null, PASSWORD=null, EMAIL=null, ADDRESS=null, ROLE=null, VALID=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +54,14 @@ public class MainActivity extends Activity {
         Id = id.getText().toString();
         Password = password.getText().toString();
 
+       // Toast.makeText(ctx, Id, Toast.LENGTH_LONG).show();
+        if( id.getText().toString().length() == 0 ){
+            id.setError("ID is required!");}
+        if( password.getText().toString().length() == 0 ){
+            password.setError( "Password is required!" );}
+        else{
         BackGround b = new BackGround();
-        b.execute(Id, Password);
+        b.execute(Id, Password);}
 
     }
 
@@ -69,7 +75,7 @@ public class MainActivity extends Activity {
             int tmp;
 
             try {
-                URL url = new URL("http://192.168.8.103/ES/login.php");
+                URL url = new URL("http://10.0.2.2/ES/loginvalid.php");
                 String urlParams = "r_id="+id+"&r_password="+password;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -105,19 +111,26 @@ public class MainActivity extends Activity {
                 JSONObject user_data = root.getJSONObject("user_data");
                 ID = user_data.getString("r_id");
                 NAME = user_data.getString("r_name");
-           PASSWORD = user_data.getString("r_password");
-          EMAIL = user_data.getString("r_email");
-        ADDRESS = user_data.getString("r_address");
+                PASSWORD = user_data.getString("r_password");
+                EMAIL = user_data.getString("r_email");
+                ADDRESS = user_data.getString("r_address");
                 ROLE= user_data.getString("r_role");
+                VALID= user_data.getString("valid");
             } catch (JSONException e) {
                 e.printStackTrace();
 
             }
-            if( id.getText().toString().length() == 0 ){
-                id.setError("ID is required!");}
-            if( password.getText().toString().length() == 0 ){
-                password.setError( "Password is required!" );}
-            else {
+            if(VALID.equals("not_valid")){
+
+                s="You are not validated yet";
+
+                Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+                Intent i = new Intent(ctx, MainActivity.class);
+
+                startActivity(i);
+            }
+
+            if(VALID.equals("valid")) {
                 if(ROLE.equals("resident") ||ROLE.equals("dependent") ){
                 Intent i = new Intent(ctx, User_Home.class);
                 i.putExtra("r_id", ID);
@@ -137,6 +150,7 @@ public class MainActivity extends Activity {
 
                     startActivity(i);
                 }
+
                 if (ROLE.equals("nothing")){
                     s="username or password is incorrect";
 

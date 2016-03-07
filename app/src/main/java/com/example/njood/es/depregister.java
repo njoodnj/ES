@@ -104,7 +104,7 @@ public class depregister extends Activity {
             else {
                 BackGround b = new BackGround();
                 b.execute(id, rid, name, pass, email, address, relation);
-                startActivity(new Intent(this, MainActivity.class));}
+            }
         }
     }
     class BackGround extends AsyncTask<String, String, String> {
@@ -127,7 +127,7 @@ public class depregister extends Activity {
 
 
             try {
-                URL url = new URL("http://192.168.8.103/ES/depregister.php");
+                URL url = new URL("http://10.0.2.2/ES/depregister.php");
 
                 String urlParams = "id="+id+"&name="+name+"&pass="+pass+"&email="+email+"&address="+address+"&relation="+relation+"&rid="+rid;
 
@@ -161,6 +161,9 @@ public class depregister extends Activity {
                 s="Data saved successfully.";
             }
             Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+            Intent i = new Intent(ctx, MainActivity.class);
+
+            startActivity(i);
         }
 
 
