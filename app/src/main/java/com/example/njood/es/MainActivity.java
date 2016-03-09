@@ -1,5 +1,7 @@
 package com.example.njood.es;
 
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,7 +18,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,8 +37,15 @@ public class MainActivity extends Activity {
 
     EditText id, password;
     String Id, Password;
-    Context ctx=this;
-    String ID=null, NAME=null, PASSWORD=null, EMAIL=null, ADDRESS=null, ROLE=null, VALID=null;
+    Context ctx = this;
+    String ID = null, NAME = null, PASSWORD = null, EMAIL = null, ADDRESS = null;
+
+    public static final String MyPREFERENCES = "MyPrefs";
+    public static final String PREID = "r_id";
+    public static final String PREPASS = "r_password";
+
+    SharedPreferences sharedpreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,29 +53,32 @@ public class MainActivity extends Activity {
         setContentView(R.layout.content_main);
         id = (EditText) findViewById(R.id.NationalID);
         password = (EditText) findViewById(R.id.passwordHP);
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+
     }
 
-    public void register_register(View v){
-        startActivity(new Intent(this,mainReg.class));
-    }
-    public void contactus(View v){
-        startActivity(new Intent(this,contactus.class));
+    public void register_register(View v) {
+        startActivity(new Intent(this, mainReg.class));
     }
 
-    public void main_login(View v){
+    public void main_login(View v) {
         Id = id.getText().toString();
         Password = password.getText().toString();
 
-       // Toast.makeText(ctx, Id, Toast.LENGTH_LONG).show();
-        if( id.getText().toString().length() == 0 ){
-            id.setError("ID is required!");}
-        if( password.getText().toString().length() == 0 ){
-            password.setError( "Password is required!" );}
-        else{
         BackGround b = new BackGround();
-        b.execute(Id, Password);}
+        b.execute(Id, Password);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+
+        editor.putString(PREID, Id);
+        editor.putString(PREPASS, Password);
+
+        editor.commit();
 
     }
+
+
 
     class BackGround extends AsyncTask<String, String, String> {
 
@@ -71,12 +86,12 @@ public class MainActivity extends Activity {
         protected String doInBackground(String... params) {
             String id = params[0];
             String password = params[1];
-            String data="";
+            String data = "";
             int tmp;
 
             try {
                 URL url = new URL("http://10.0.2.2/ES/login.php");
-                String urlParams = "r_id="+id+"&r_password="+password;
+                String urlParams = "r_id=" + id + "&r_password=" + password;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -86,8 +101,8 @@ public class MainActivity extends Activity {
                 os.close();
 
                 InputStream is = httpURLConnection.getInputStream();
-                while((tmp=is.read())!=-1){
-                    data+= (char)tmp;
+                while ((tmp = is.read()) != -1) {
+                    data += (char) tmp;
                 }
 
                 is.close();
@@ -96,12 +111,13 @@ public class MainActivity extends Activity {
                 return data;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
-                return "Exception: "+e.getMessage();
+                return "Exception: " + e.getMessage();
             } catch (IOException e) {
                 e.printStackTrace();
-                return "Exception: "+e.getMessage();
+                return "Exception: " + e.getMessage();
             }
         }
+
 
         @Override
         protected void onPostExecute(String s) {
@@ -114,52 +130,27 @@ public class MainActivity extends Activity {
                 PASSWORD = user_data.getString("r_password");
                 EMAIL = user_data.getString("r_email");
                 ADDRESS = user_data.getString("r_address");
-                ROLE= user_data.getString("r_role");
-                VALID= user_data.getString("valid");
             } catch (JSONException e) {
                 e.printStackTrace();
 
             }
-            if(VALID.equals("not_valid")){
-
-                s="You are not validated yet";
-
-                Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
-                Intent i = new Intent(ctx, MainActivity.class);
-
-                startActivity(i);
+            if (id.getText().toString().length() == 0) {
+                id.setError("ID is required!");
             }
-
-            if(VALID.equals("valid")) {
-                if(ROLE.equals("resident") ||ROLE.equals("dependent") ){
-                Intent i = new Intent(ctx, User_Home.class);
-                i.putExtra("r_id", ID);
-                i.putExtra("r_name", NAME);
-               i.putExtra("r_password", PASSWORD);
-               i.putExtra("r_email", EMAIL);
-               i.putExtra("r_address", ADDRESS);
-                startActivity(i);}
-                if (ROLE.equals("driver")){
-                    Intent i = new Intent(ctx, driverprofile.class);
+            if (password.getText().toString().length() == 0) {
+                password.setError("Password is required!");
+            }  else {
+                    Intent i = new Intent(ctx, User_Home.class);
                     i.putExtra("r_id", ID);
                     i.putExtra("r_name", NAME);
-                            startActivity(i);
-                }
-                if (ROLE.equals("security")){
-                    Intent i = new Intent(ctx, securityGuard.class);
-
+                    i.putExtra("r_password", PASSWORD);
+                    i.putExtra("r_email", EMAIL);
+                    i.putExtra("r_address", ADDRESS);
                     startActivity(i);
                 }
-
-                if (ROLE.equals("nothing")){
-                    s="username or password is incorrect";
-
-                Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
-                Intent i = new Intent(ctx, MainActivity.class);
-
-                startActivity(i);
-                }}
             }
         }
+
+
     }
 

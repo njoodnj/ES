@@ -44,22 +44,12 @@
             android:name=".Driver_Home"
             android:label="@string/title_activity_driver__home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".driverprofile"
-            android:label="@string/title_activity_driverprofile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".securityGuard"
-            android:label="@string/title_activity_security_guard"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".contactus"
-            android:label="@string/title_activity_contactus"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".inv2"
-            android:label="@string/title_activity_inv2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
     </application>
 
 </manifest>

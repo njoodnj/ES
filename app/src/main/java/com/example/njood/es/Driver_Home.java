@@ -1,5 +1,7 @@
 package com.example.njood.es;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,11 +12,13 @@ import android.view.View;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Driver_Home extends Activity {
 
-    String did , dname,  dwelcome;
+
+    String did , dname, dpassword,dwelcome;
     TextView didTV ,dnameTV,  dwelcomeTV;
 
     @Override
@@ -22,12 +26,15 @@ public class Driver_Home extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver__home);
 
+
+
         didTV = (TextView) findViewById(R.id.driver_id);
         dnameTV = (TextView) findViewById(R.id.driver_name);
         dwelcomeTV = (TextView) findViewById(R.id.dwelcomename);
 
         did = getIntent().getStringExtra("dr_id");
         dname = getIntent().getStringExtra("dr_name");
+        dpassword = getIntent().getStringExtra("dr_password");
         dwelcome = getIntent().getStringExtra("dr_name");
 
 
@@ -37,6 +44,23 @@ public class Driver_Home extends Activity {
 
 
     }
+    public  void logout(View view){
+        SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString(did, "");
+        editor.putString(dpassword, "");
+        editor.putString(dname, "");
+        editor.commit();
+        Intent intent = new Intent(Driver_Home.this, MainActivity.class);
+        startActivity(intent);
+
+
+
+    }
+
+
 }
+
+
 
 

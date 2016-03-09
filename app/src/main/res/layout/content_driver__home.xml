@@ -21,19 +21,11 @@
         android:text="Welcome"
         android:id="@+id/welcome"
         android:textStyle="bold"
-        android:layout_above="@+id/dwelcomename"
-        android:layout_alignLeft="@+id/dwelcomename"
-        android:layout_alignStart="@+id/dwelcomename" />
-
-
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/imageView"
-        android:background="@drawable/driver"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="50dp" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,10 +33,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/dwelcomename"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_marginBottom="62dp" />
+        android:layout_below="@+id/welcome"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="24dp"
+        android:textIsSelectable="false" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,9 +45,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/driver_id"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/dwelcomename"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="75dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,6 +59,18 @@
         android:layout_below="@+id/driver_id"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:clickable="true"
+        android:onClick="logout"
+        android:background="@drawable/lof"
+        android:layout_below="@+id/driver_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp" />
 
 
 
