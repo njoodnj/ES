@@ -13,4 +13,8 @@
     <string name="title_activity_security_guard">securityGuard</string>
     <string name="title_activity_contactus">contactus</string>
     <string name="title_activity_inv2">inv2</string>
+    <string name="title_activity_enablebt">enablebt</string>
+    <string name="title_activity_scan">scan</string>
+    <string name="title_activity_auth">auth</string>
+    <string name="title_activity_bgscan">bgscan</string>
 </resources>

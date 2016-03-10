@@ -3,6 +3,8 @@
     package="com.example.njood.es">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
         android:allowBackup="true"
@@ -59,6 +61,18 @@
         <activity
             android:name=".inv2"
             android:label="@string/title_activity_inv2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".scan"
+            android:label="@string/title_activity_scan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".auth"
+            android:label="@string/title_activity_auth"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bgscan"
+            android:label="@string/title_activity_bgscan"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
