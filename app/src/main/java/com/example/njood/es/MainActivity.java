@@ -47,6 +47,7 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this,mainReg.class));
     }
     public void contactus(View v){
+
         startActivity(new Intent(this,contactus.class));
     }
 
