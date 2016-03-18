@@ -2,6 +2,7 @@ package com.example.njood.es;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +46,8 @@ public class invite extends Activity {
             Number.setError( "number of visits is required!" );}
         else {
             BackGround b = new BackGround();
-            b.execute(Rid,Name, NUmber);}
+            b.execute(Rid,Name, NUmber);
+            startActivity(new Intent(this,visitor.class));}
     }
 
     class BackGround extends AsyncTask<String, String, String> {

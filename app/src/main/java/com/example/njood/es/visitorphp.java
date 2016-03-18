@@ -1,7 +1,7 @@
 package com.example.njood.es;
 
 public class visitorphp extends visitorchanges {
-    String URL = "http://192.168.100.4/ES/visitor.php";
+    String URL = "http://192.168.100.2/ES/visitor.php";
     String url = "";
     String response = "";
 
