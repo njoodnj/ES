@@ -233,4 +233,14 @@
         android:textColorLink="#a5c0ec"
         android:onClick="policy_pop"/>
 
+    <TextView
+        android:id="@+id/mac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="blue address!"
+        android:layout_above="@+id/policy"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="25dp" />
+
 </RelativeLayout>
