@@ -111,9 +111,6 @@ public class Register extends Activity {
             String data="";
             int tmp;
 
-
-
-
             try {
                 URL url = new URL("http://10.0.2.2/ES/register.php");
 
