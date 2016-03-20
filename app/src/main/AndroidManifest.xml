@@ -58,10 +58,10 @@
         <activity
             android:name=".update"
             android:label="@string/title_activity_update"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-            android:name=".inv2"
-            android:label="@string/title_activity_inv2"
             android:theme="@style/AppTheme.NoActionBar" />
+        android:name=".inv2"
+        android:label="@string/title_activity_inv2"
+        android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".visitor"
             android:label="@string/title_activity_visitor"
@@ -74,7 +74,6 @@
             android:name=".Forgot"
             android:label="@string/title_activity_forgot"
             android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>

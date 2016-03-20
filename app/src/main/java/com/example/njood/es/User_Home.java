@@ -19,9 +19,10 @@ import android.widget.TextView;
 
 public class User_Home extends Activity {
 
-    String id , name, password,email, address, welcome;
+    String id , name,passwordU, email, address, welcome ;
     TextView idTV ,nameTV, emailTV , addressTV, welcomeTV;
     final Context context = this;
+    Context ctx=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,16 @@ public class User_Home extends Activity {
         welcomeTV.setText(" " + name);
 
     }
+
+    public void update_update (View v){
+        Intent i = new Intent(ctx, update.class);
+        i.putExtra("r_id", id);
+        i.putExtra("r_password", passwordU);
+        i.putExtra("r_address", address);
+        i.putExtra("r_name", name);
+        i.putExtra("r_name", welcome);
+        startActivity(i);}
+
     public  void logout(View view) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
@@ -59,7 +70,7 @@ public class User_Home extends Activity {
                         SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.putString(id, "");
-                        editor.putString(password, "");
+                        editor.putString(passwordU, "");
                         editor.putString(name, "");
                         editor.putString(email, "");
                         editor.putString(address, "");
