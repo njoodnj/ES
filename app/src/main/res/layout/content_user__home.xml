@@ -18,39 +18,31 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Welcome"
-        android:id="@+id/uwelcome"
+        android:id="@+id/welcome"
         android:textStyle="bold"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_marginTop="75dp" />
-
-
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/imageView"
-        android:background="@drawable/profilepic"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="50dp" />
+
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/viewbutton"
         android:background="@drawable/button"
-        android:layout_above="@+id/updatebutton"
+        android:onClick="visitor"
+        android:layout_below="@+id/home_address"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/updatebutton"
         android:background="@drawable/button2"
-        android:layout_marginBottom="59dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/viewbutton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -63,9 +55,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/welcomename"
-        android:layout_below="@+id/uwelcome"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView" />
+        android:textSize="24dp"
+        android:layout_below="@+id/welcome" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,7 +64,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/home_name"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/home_id"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -103,7 +94,19 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/home_id"
-        android:layout_above="@+id/home_name"
+        android:layout_below="@+id/welcomename"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="54dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:clickable="true"
+        android:onClick="logout"
+        android:background="@drawable/lof"
+        android:layout_below="@+id/updatebutton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

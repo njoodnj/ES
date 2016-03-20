@@ -17,6 +17,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.SharedPreferences;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +36,9 @@ public class MainActivity extends Activity {
     String Id, Password;
     Context ctx=this;
     String ID=null, NAME=null, PASSWORD=null, EMAIL=null, ADDRESS=null, ROLE=null, VALID=null;
+
+
+    public static final String MyPREFERENCES = "MyPrefs" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +81,7 @@ public class MainActivity extends Activity {
             int tmp;
 
             try {
-                URL url = new URL("http://192.168.8.100/ES/login.php");
+                URL url = new URL("http://192.168.1.114/ES/login.php");
                 String urlParams = "r_id="+id+"&r_password="+password;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -141,7 +146,7 @@ public class MainActivity extends Activity {
                i.putExtra("r_address", ADDRESS);
                 startActivity(i);}
                 if (ROLE.equals("driver")){
-                    Intent i = new Intent(ctx, driverprofile.class);
+                    Intent i = new Intent(ctx, Driver_Home.class);
                     i.putExtra("r_id", ID);
                     i.putExtra("r_name", NAME);
                             startActivity(i);

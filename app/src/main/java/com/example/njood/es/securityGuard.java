@@ -61,7 +61,10 @@ public class securityGuard extends AppCompatActivity {
             }
         });
     }
+    public void entrancelog(View v){
 
+        startActivity(new Intent(this,Entrancelog.class));
+    }
     public void onActivityResult(int request_code, int result_code ,Intent data)
 
     {
@@ -95,7 +98,7 @@ public class securityGuard extends AppCompatActivity {
             int tmp;
 
             try {
-                URL url = new URL("http://192.168.100.2/ES/refnum.php");
+                URL url = new URL("http://192.168.1.114/ES/refnum.php");
                 String urlParams = "Refnum="+Refnum;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
