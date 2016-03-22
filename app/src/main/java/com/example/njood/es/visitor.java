@@ -165,7 +165,7 @@ public class visitor extends Activity implements OnClickListener {
 
                 tambahBiodata();
 
-            } else {
+            } else {,
 			/*
 			 * Melakukan pengecekan pada data array, agar sesuai dengan index
 			 * masing-masing button
