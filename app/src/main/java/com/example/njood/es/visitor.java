@@ -40,7 +40,7 @@ public class visitor extends Activity implements OnClickListener {
     TableLayout visitor;
 
     Button buttonTambahBiodata;
-    ArrayList<Button> buttonEdit = new ArrayList<Button>();
+    //ArrayList<Button> buttonEdit = new ArrayList<Button>();
     ArrayList<Button> buttonDelete = new ArrayList<Button>();
 
     JSONArray arrayBiodata;
@@ -131,12 +131,12 @@ public class visitor extends Activity implements OnClickListener {
                 viewNumber.setPadding(5, 1, 5, 1);
                 barisTabel.addView(viewNumber);
 
-                buttonEdit.add(i, new Button(this));
+                /*buttonEdit.add(i, new Button(this));
                 buttonEdit.get(i).setId(Integer.parseInt(rid));
                 buttonEdit.get(i).setTag("Edit");
                 buttonEdit.get(i).setText("Edit");
                 buttonEdit.get(i).setOnClickListener(this);
-                barisTabel.addView(buttonEdit.get(i));
+                barisTabel.addView(buttonEdit.get(i));*/
 
                 buttonDelete.add(i, new Button(this));
                 buttonDelete.get(i).setId(Integer.parseInt(rid));
@@ -170,25 +170,27 @@ public class visitor extends Activity implements OnClickListener {
 			 * Melakukan pengecekan pada data array, agar sesuai dengan index
 			 * masing-masing button
 			 */
-        for (int i = 0; i < buttonEdit.size(); i++) {
+        for (int i = 0; i < buttonDelete.size(); i++) {
 
 
-            if (view.getId() == buttonEdit.get(i).getId() && view.getTag().toString().trim().equals("Edit")) {
-                // Toast.makeText(visitor.this, "Edit : " +
-                // buttonEdit.get(i).getId(), Toast.LENGTH_SHORT).show();
-                int id = buttonEdit.get(i).getId();
-                getDataByID(id);
-
-            }
-            else if (view.getId() == buttonDelete.get(i).getId() && view.getTag().toString().trim().equals("Delete")) {
+            if (view.getId() == buttonDelete.get(i).getId() && view.getTag().toString().trim().equals("Delete")) {
                 // Toast.makeText(visitor.this, "Delete : " +
                 // buttonDelete.get(i).getId(), Toast.LENGTH_SHORT).show();
                 int id = buttonDelete.get(i).getId();
                 deleteBiodata(id);
 
+             /*(view.getId() == buttonEdit.get(i).getId() && view.getTag().toString().trim().equals("Edit")) {
+                // Toast.makeText(visitor.this, "Edit : " +
+                // buttonEdit.get(i).getId(), Toast.LENGTH_SHORT).show();
+                int id = buttonEdit.get(i).getId();
+                getDataByID(id);*/
+
+            }
+
+
             }
         }
-    }
+
 
 
     public void deleteBiodata(int rid) {
