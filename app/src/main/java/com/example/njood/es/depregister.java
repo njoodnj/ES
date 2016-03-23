@@ -1,6 +1,7 @@
 package com.example.njood.es;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -27,10 +28,10 @@ public class depregister extends Activity {
 
     Button r_submit;
     EditText r_ID, r_FullName, r_Password, r_repassword, r_email, r_reemail , r_address, r_relation, r_rid;
-    String id, name, pass, repass, email, remail, address, relation, rid;
+    String id, name, pass, repass, email, remail, address, relation, rid, mac;
     Context ctx=this;
     CheckBox r_policy;
-    TextView popup_pol;
+    TextView popup_pol, Mac;
 
 
 
@@ -50,9 +51,20 @@ public class depregister extends Activity {
         r_policy= (CheckBox) findViewById(R.id.policy);
         r_relation= (EditText) findViewById(R.id.relation);
         r_rid= (EditText) findViewById(R.id.RID);
+        Mac = (TextView)findViewById(R.id.mac);
+        StringBuilder sb = new StringBuilder();
+        BluetoothAdapter ba =BluetoothAdapter.getDefaultAdapter();
+        if(ba !=null){
+            sb.append("" + ba.getAddress() +"\n" );
 
+
+        }else {   sb.append("blueTooth Adress: not supported by this device \n" );
+        }
+
+        Mac.setText(sb.toString());
 
     }
+
 
     public void policy_pop(View view)
     {
@@ -74,6 +86,7 @@ public class depregister extends Activity {
         address = r_address.getText().toString();
         relation= r_relation.getText().toString();
         rid= r_rid.getText().toString();
+        mac =Mac.getText().toString();
 
         if( r_ID.getText().toString().length() == 0 ){
             r_ID.setError( "ID is required!" );}
@@ -103,7 +116,7 @@ public class depregister extends Activity {
                 r_reemail.setError( "email dose not match" );}
             else {
                 BackGround b = new BackGround();
-                b.execute(id, rid, name, pass, email, address, relation);
+                b.execute(id, rid, name, pass, email, address, relation,mac);
             }
         }
     }
@@ -120,6 +133,7 @@ public class depregister extends Activity {
             String email = params[4];
             String address = params[5];
             String relation = params[6];
+            String mac =  params[7];
             String data="";
             int tmp;
 
@@ -129,7 +143,7 @@ public class depregister extends Activity {
             try {
                 URL url = new URL("http://10.0.2.2/ES/depregister.php");
 
-                String urlParams = "id="+id+"&name="+name+"&pass="+pass+"&email="+email+"&address="+address+"&relation="+relation+"&rid="+rid;
+                String urlParams = "id="+id+"&name="+name+"&pass="+pass+"&email="+email+"&address="+address+"&relation="+relation+"&rid="+rid+"&mac=" +mac;;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);

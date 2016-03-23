@@ -1,6 +1,8 @@
 package com.example.njood.es;
 
+import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import android.app.Activity;
@@ -24,14 +26,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Register extends Activity {
+
+public class Register extends AppCompatActivity {
 
     Button r_submit;
     EditText r_ID, r_FullName, r_Password, r_repassword, r_email, r_reemail , r_address;
-    String id, name, pass, repass, email, remail, address;
+    String id, name, pass, repass, email, remail, address, mac;
     Context ctx=this;
     CheckBox r_policy;
-    TextView popup_pol;
+    TextView popup_pol, Mac;
 
 
 
@@ -49,19 +52,22 @@ public class Register extends Activity {
         r_reemail = (EditText) findViewById(R.id.reemail);
         r_address= (EditText) findViewById(R.id.address);
         r_policy= (CheckBox) findViewById(R.id.policy);
+        Mac = (TextView)findViewById(R.id.mac);
+        StringBuilder sb = new StringBuilder();
+
+        BluetoothAdapter ba =BluetoothAdapter.getDefaultAdapter();
+        if(ba !=null){
+            sb.append("" + ba.getAddress() +"\n" );
 
 
-    }
-    public void policy_pop(View view)
-    {
+        }else {   sb.append("blueTooth Adress: not supported by this device \n" );
+        }
 
-        Intent i = new Intent(getApplicationContext(),policy.class);
-        startActivity(i);
+        Mac.setText(sb.toString());
 
     }
 
     public void register_register(View v) {
-
 
         id = r_ID.getText().toString();
         name = r_FullName.getText().toString();
@@ -70,6 +76,7 @@ public class Register extends Activity {
         email = r_email.getText().toString();
         remail = r_reemail.getText().toString();
         address = r_address.getText().toString();
+        mac =Mac.getText().toString();
         if( r_ID.getText().toString().length() == 0 ){
             r_ID.setError( "ID is required!" );}
         if( r_FullName.getText().toString().length() == 0 ){
@@ -94,9 +101,10 @@ public class Register extends Activity {
                 r_reemail.setError( "Email dose not match" );}
             else {
 
-        BackGround b = new BackGround();
-        b.execute(id, name, pass, email, address);
-    }}}
+                BackGround b = new BackGround();
+                b.execute(id, name, pass, email, address, mac);
+                startActivity(new Intent(this, MainActivity.class));
+            }}}
     class BackGround extends AsyncTask<String, String, String> {
 
 
@@ -108,13 +116,15 @@ public class Register extends Activity {
             String pass = params[2];
             String email = params[3];
             String address = params[4];
+            String mac = params [5];
             String data="";
             int tmp;
 
-            try {
-                URL url = new URL("http://10.0.2.2/ES/register.php");
 
-                String urlParams = "id="+id+"&name="+name+"&pass="+pass+"&email="+email+"&address="+address;
+            try {
+                URL url = new URL("http://192.168.8.100/ES/register.php");
+
+                String urlParams = "id="+id+"&name="+name+"&pass="+pass+"&email="+email+"&address="+address+"&mac=" +mac;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -146,10 +156,6 @@ public class Register extends Activity {
                 s="Data saved successfully.";
             }
             Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
-            Intent i = new Intent(ctx, MainActivity.class);
-
-            startActivity(i);
-
         }
 
 
