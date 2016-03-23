@@ -34,10 +34,10 @@ public class Driver_Home extends Activity {
         dnameTV = (TextView) findViewById(R.id.driver_name);
         dwelcomeTV = (TextView) findViewById(R.id.dwelcomename);
 
-        did = getIntent().getStringExtra("dr_id");
-        dname = getIntent().getStringExtra("dr_name");
-        dpassword = getIntent().getStringExtra("dr_password");
-        dwelcome = getIntent().getStringExtra("dr_name");
+        did = getIntent().getStringExtra("r_id");
+        dname = getIntent().getStringExtra("r_name");
+        dpassword = getIntent().getStringExtra("r_password");
+        dwelcome = getIntent().getStringExtra("r_name");
 
 
         didTV.setText("ID No:" + did);

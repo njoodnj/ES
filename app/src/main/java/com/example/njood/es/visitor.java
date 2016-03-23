@@ -50,6 +50,7 @@ public class visitor extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_visitor);
 
+        String extraid= getIntent().getStringExtra("r_id");
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -90,7 +91,7 @@ public class visitor extends Activity implements OnClickListener {
 
         try {
 
-            arrayBiodata = new JSONArray(biodata.tampilBiodata());
+            arrayBiodata = new JSONArray(biodata.tampilBiodata(extraid));
 
             for (int i = 0; i < arrayBiodata.length(); i++) {
                 JSONObject jsonChildNode = arrayBiodata.getJSONObject(i);

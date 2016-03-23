@@ -141,7 +141,7 @@ public class depregister extends Activity {
 
 
             try {
-                URL url = new URL("http://10.0.2.2/ES/depregister.php");
+                URL url = new URL("http://192.168.8.101/ES/depregister.php");
 
                 String urlParams = "id="+id+"&name="+name+"&pass="+pass+"&email="+email+"&address="+address+"&relation="+relation+"&rid="+rid+"&mac=" +mac;;
 

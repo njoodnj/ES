@@ -1,13 +1,13 @@
 package com.example.njood.es;
 
 public class visitorphp extends visitorchanges {
-    String URL = "http://192.168.100.2/ES/visitor.php";
+    String URL = "http://192.168.8.101/ES/visitor.php";
     String url = "";
     String response = "";
 
-    public String tampilBiodata() {
+    public String tampilBiodata(String rid) {
         try {
-            url = URL + "?operation=view";
+            url = URL + "?operation=view&rid=" + rid;
             System.out.println("URL Tampil visitorphp: " + url);
             response = call(url);
         } catch (Exception e) {

@@ -59,6 +59,7 @@ public class User_Home extends Activity {
         i.putExtra("r_name", welcome);
         startActivity(i);}
 
+
     public  void logout(View view) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
@@ -99,6 +100,7 @@ public class User_Home extends Activity {
 
     public  void visitor(View view){
         Intent i = new Intent(getApplicationContext(),visitor.class);
+        i.putExtra("r_id", id);
         startActivity(i);}
 
 }

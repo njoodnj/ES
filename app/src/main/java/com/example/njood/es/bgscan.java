@@ -50,7 +50,7 @@ public class bgscan extends AppCompatActivity {
             int tmp;
 
             try {
-                URL url = new URL("http://192.168.8.100/ES/bluetooth.php");
+                URL url = new URL("http://192.168.8.101/ES/bluetooth.php");
                 String urlParams = "r_id="+id+"&r_password="+password;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

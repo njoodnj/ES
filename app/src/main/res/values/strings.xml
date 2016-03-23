@@ -13,7 +13,9 @@
     <string name="title_activity_security_guard">securityGuard</string>
     <string name="title_activity_contactus">contactus</string>
     <string name="title_activity_inv2">inv2</string>
+    <string name="title_activity_invite">invite</string>
     <string name="title_activity_visitor">visitor</string>
+    <string name="title_activity_refnum">refnum</string>
     <string name="title_activity_entrancelog">Entrancelog</string>
     <string name="title_activity_forgot">Forgot</string>
     <string name="title_activity_forgot2">Forgot2</string>
